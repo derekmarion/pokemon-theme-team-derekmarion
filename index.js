@@ -11,10 +11,9 @@ function catchEm() {
         console.log(response);
         //show picture, name, and type of pokemon
         const name = response.data.name;
-        const type = function getTypes() {
-            
-        }
-        console.log(name, type);
+        const type = response.data.types[0].type.name
+        const sprite = response.data.sprites.front_default
+        console.log(name, type, sprite);
     })
     .catch(function (error) {
       // handle error
