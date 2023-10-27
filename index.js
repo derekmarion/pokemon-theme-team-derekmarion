@@ -13,7 +13,12 @@ function catchEm() {
         const name = response.data.name;
         const type = response.data.types[0].type.name
         const sprite = response.data.sprites.front_default
-        console.log(name, type, sprite);
+        let text = document.createTextNode(`You caught a ${name.charAt(0).toUpperCase() + name.slice(1)}, a ${type}-type pokemon`);
+        document.getElementById("output").appendChild(text);
+        let image = document.createElement("img")
+        image.src = sprite
+        image.style.display = "block"
+        document.getElementById("output").appendChild(image);
     })
     .catch(function (error) {
       // handle error
@@ -21,9 +26,7 @@ function catchEm() {
     })
     .finally(function () {
       // always executed
-    });
-    // let text = document.createTextNode(`You caught a pokemon with id ${id}`);
-    // document.body.appendChild(text);
+    })
 }
 
 button.addEventListener("click", catchEm);
